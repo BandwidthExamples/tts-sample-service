@@ -1,0 +1,7 @@
+pluginRepositories {
+    gradlePluginPortal()
+}
+
+rootProject.name = 'tts-sample-service'
+include ':api'
+include ':service'

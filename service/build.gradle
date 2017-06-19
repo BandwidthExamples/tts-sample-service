@@ -1,0 +1,24 @@
+jar.archiveName 'service.jar'
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot'
+    compile 'org.springframework.boot:spring-boot-starter'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-autoconfigure'
+
+    compile 'commons-io:commons-io:2.5'
+    compile('org.springframework.cloud:spring-cloud-starter-hystrix:1.2.5.RELEASE') {
+        exclude(module: 'hystrix-core')
+    }
+    compile('com.netflix.hystrix:hystrix-core:1.5.9') {
+        exclude(module: 'archaius-core')
+    }
+
+    compile 'com.amazonaws:aws-java-sdk-polly:1.11.86'
+    compile 'com.amazonaws:aws-java-sdk-s3:1.11.86'
+    compile 'com.google.code.gson:gson:2.8.0'
+}
+
+bootRepackage {
+    enabled = false
+}

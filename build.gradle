@@ -1,0 +1,62 @@
+plugins {
+    id 'org.springframework.boot' version '1.5.1.RELEASE'
+}
+
+ext['classmate.version'] = '1.3.1'
+ext['tomcat.version'] = '8.5.12'
+ext['httpcore.version'] = '4.4.4'
+ext['commons-codec.version'] = '1.9'
+ext['joda-time.version'] = '2.8.1'
+ext {
+    GRADLE_VERSION = '3.2.1'
+    mainClassName = 'com.bandwidth.tts.Text2SpeechSampleApi'
+}
+
+allprojects {
+    group = 'com.bandwidth'
+    version = 'hg id -i'.execute().text.trim()
+}
+
+subprojects {
+    apply plugin: 'idea'
+    apply plugin: 'java'
+    apply plugin: 'jacoco'
+    apply plugin: 'org.springframework.boot'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile 'org.ow2.asm:asm:5.0.3'
+        compile 'com.google.guava:guava:18.0'
+        compile 'org.apache.commons:commons-lang3:3.5'
+        compile "org.springframework.boot:spring-boot-starter-logging"
+
+        testCompile "org.springframework.boot:spring-boot-starter-test"
+    }
+
+    configurations.all {
+        exclude(group: 'commons-logging')
+    }
+
+    jar {
+        manifest {
+            attributes 'Implementation-Build': version
+        }
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "$GRADLE_VERSION"
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-all.zip"
+}
+
+println "\nUsing changeset: $version\n"
