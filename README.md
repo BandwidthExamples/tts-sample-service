@@ -1,4 +1,9 @@
-## Bandwidth Sample Text-To-Speech Service
+<div align="center">
+
+# Bandwidth Sample Text-To-Speech Service
+
+<a href="http://dev.bandwidth.com"><img src="https://s3.amazonaws.com/bwdemos/BW_Voice_Messaging.png"/></a>
+</div>
 
 A bare-bones functional service meant to provide a basic framework for building a Text-to-Speech (TTS) Service backed by Amazon Polly and other vendors.
 
